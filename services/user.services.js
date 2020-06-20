@@ -16,14 +16,22 @@ class UserService {
 
     update(id, data) {
         let index = userData.findIndex(x => x.id == id);
-        userData[index].name = data.name;
-        userData[index].age = data.age;
-        return "Usuario actualizado";
+        if (index != -1) {
+            userData[index].name = data.name;
+            userData[index].age = data.age;
+            return "Usuario actualizado";
+        } else {
+            return "Usuario no existe";
+        }
     }
 
     delete(id) {
         let index = userData.findIndex(x => x.id == id);
-        return userData.splice(index, 1);
+        if (index != -1) {
+            return userData.splice(index, 1);
+        } else {
+            return "Usuario no existe";
+        }
     }
 }
 
